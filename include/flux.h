@@ -1,7 +1,7 @@
 /*!
  * \file flux.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -28,16 +28,18 @@
 #include "array.h"
 
 /*! calculate inviscid flux in 2D */
-void calc_invf_2d(array<double>& in_u, array<double>& out_f);
+void calc_invf_2d(array<double> &in_u, array<double> &out_f);
 
 /*! calculate inviscid flux in 3D */
-void calc_invf_3d(array<double>& in_u, array<double>& out_f);
+void calc_invf_3d(array<double> &in_u, array<double> &out_f);
 
 /*! calculate viscous flux in 2D */
-void calc_visf_2d(array<double>& in_u, array<double>& in_grad_u, array<double>& out_f);
+void calc_visf_2d(array<double> &in_u, array<double> &in_grad_u,
+                  array<double> &out_f);
 
 /*! calculate viscous flux in 3D */
-void calc_visf_3d(array<double>& in_u, array<double>& in_grad_u, array<double>& out_f);
+void calc_visf_3d(array<double> &in_u, array<double> &in_grad_u,
+                  array<double> &out_f);
 
 /*!
  * \brief calculate & add addtional ALE flux term in 2D
@@ -45,7 +47,8 @@ void calc_visf_3d(array<double>& in_u, array<double>& in_grad_u, array<double>& 
  * \param[in] in_v - Grid velocity
  * \param[in,out] out_f - Modified flux vector
  */
-void calc_alef_2d(array<double>& in_u, array<double>& in_v, array<double>& out_f);
+void calc_alef_2d(array<double> &in_u, array<double> &in_v,
+                  array<double> &out_f);
 
 /*!
  * \brief calculate & add addtional ALE flux term in 3D
@@ -53,4 +56,5 @@ void calc_alef_2d(array<double>& in_u, array<double>& in_v, array<double>& out_f
  * \param[in] in_v - Grid velocity
  * \param[in,out] out_f - Modified flux vector
  */
-void calc_alef_3d(array<double>& in_u, array<double>& in_v, array<double>& out_f);
+void calc_alef_3d(array<double> &in_u, array<double> &in_v,
+                  array<double> &out_f);

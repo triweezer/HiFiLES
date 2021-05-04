@@ -1,7 +1,7 @@
 /*!
  * \file global.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -34,50 +34,44 @@ extern input run_input;
 extern const double pi;
 
 /** enumeration for cell type */
-enum CTYPE {
-    TRI     = 0,
-    QUAD    = 1,
-    TET     = 2,
-    PRISM   = 3,
-    HEX     = 4,
-    PYRAMID = 5
-};
+enum CTYPE { TRI = 0, QUAD = 1, TET = 2, PRISM = 3, HEX = 4, PYRAMID = 5 };
 
 /** enumeration for boundary conditions */
 enum BCFLAG {
-  SUB_IN_SIMP   = 1,
-  SUB_OUT_SIMP  = 2,
-  SUB_IN_CHAR   = 3,
-  SUB_OUT_CHAR  = 4,
-  SUP_IN        = 5,
-  SUP_OUT       = 6,
-  SLIP_WALL     = 7,
-  CYCLIC        = 9,
-  ISOTHERM_FIX  = 11,
-  ADIABAT_FIX   = 12,
+  SUB_IN_SIMP = 1,
+  SUB_OUT_SIMP = 2,
+  SUB_IN_CHAR = 3,
+  SUB_OUT_CHAR = 4,
+  SUP_IN = 5,
+  SUP_OUT = 6,
+  SLIP_WALL = 7,
+  CYCLIC = 9,
+  ISOTHERM_FIX = 11,
+  ADIABAT_FIX = 12,
   ISOTHERM_MOVE = 13,
-  ADIABAT_MOVE  = 14,
-  CHAR          = 15,
-  SLIP_WALL_DUAL= 16,
-  AD_WALL       = 50
+  ADIABAT_MOVE = 14,
+  CHAR = 15,
+  SLIP_WALL_DUAL = 16,
+  AD_WALL = 50
 };
 
 enum MOTION_TYPE {
-  STATIC_MESH       = 0,
+  STATIC_MESH = 0,
   LINEAR_ELASTICITY = 1,
-  RIGID_MOTION      = 2,
-  PERTURB_TEST      = 3,
-  BLENDING          = 4
+  RIGID_MOTION = 2,
+  PERTURB_TEST = 3,
+  BLENDING = 4
 };
 
 /** enumeration for mesh motion type */
-enum {MOTION_DISABLED, MOTION_ENABLED};
+enum { MOTION_DISABLED, MOTION_ENABLED };
 
 /*! environment variable specifying location of HiFiLES repository */
-extern const char* HIFILES_DIR;
+extern const char *HIFILES_DIR;
 
 /*! routine that mimics BLAS dgemm */
-int dgemm(int Arows, int Bcols, int Acols, double alpha, double beta, double* a, double* b, double* c);
+int dgemm(int Arows, int Bcols, int Acols, double alpha, double beta, double *a,
+          double *b, double *c);
 
 /*! routine that mimics BLAS daxpy */
 int daxpy(int n, double alpha, double *x, double *y);

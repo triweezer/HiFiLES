@@ -16,11 +16,11 @@
 #include <GKlib.h>
 #include <parmetis.h>
 
-#include "../metis/libmetis/gklib_defs.h"
-#include "../libparmetis/rename.h"
 #include "../libparmetis/defs.h"
-#include "../libparmetis/struct.h"
 #include "../libparmetis/macros.h"
 #include "../libparmetis/proto.h"
+#include "../libparmetis/rename.h"
+#include "../libparmetis/struct.h"
+#include "../metis/libmetis/gklib_defs.h"
 
-#define MAXNCON         32
+#define MAXNCON 32

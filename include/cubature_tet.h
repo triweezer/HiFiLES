@@ -1,7 +1,7 @@
 /*!
  * \file cubature_tet.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -28,23 +28,21 @@
 #include <string>
 #include "array.h"
 
-class cubature_tet
-{
-public:
-
+class cubature_tet {
+ public:
   // #### constructors ####
 
   // default constructor
   cubature_tet();
 
   // constructor 1
-  cubature_tet(int in_rule); // set by order
+  cubature_tet(int in_rule);  // set by order
 
   // copy constructor
-  cubature_tet(const cubature_tet& in_cubature);
+  cubature_tet(const cubature_tet &in_cubature);
 
   // assignment
-  cubature_tet& operator=(const cubature_tet& in_cubature);
+  cubature_tet &operator=(const cubature_tet &in_cubature);
 
   // destructor
   ~cubature_tet();
@@ -79,7 +77,7 @@ public:
 
   // weight of cubature points
   array<double> weights;
-  
+
   // cubature data file
-  ifstream datfile;
+  std::ifstream datfile;
 };

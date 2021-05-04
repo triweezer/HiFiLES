@@ -132,6 +132,6 @@ else if(get_order==5)
 }
 else
 {
-    cout << "Haven't implemented this order in loc_inter_pts" << endl;
+    std::cerr << "Haven't implemented this order in loc_inter_pts" << std::endl;
     exit(1);
 }

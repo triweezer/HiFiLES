@@ -1,7 +1,7 @@
 /*!
  * \file mpi_inters.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,20 +25,18 @@
 
 #pragma once
 
-#include "inters.h"
 #include "array.h"
+#include "inters.h"
 #include "solution.h"
 
 #ifdef _MPI
-#include "mpi.h"
+#  include "mpi.h"
 #endif
 
-struct solution; // forwards declaration
+struct solution;  // forwards declaration
 
-class mpi_inters: public inters
-{
-public:
-
+class mpi_inters : public inters {
+ public:
   // #### constructors ####
 
   // default constructor
@@ -56,7 +54,7 @@ public:
 
   void set_nproc(int in_nproc, int in_rank);
 
-  void set_nout_proc(int in_nout,int in_p);
+  void set_nout_proc(int in_nout, int in_p);
 
   void set_mpi_requests(int in_number_of_request);
 
@@ -72,7 +70,8 @@ public:
 
   void receive_sgsf_fpts();
 
-  void set_mpi(int in_inter, int in_ele_type_l, int in_ele_l, int in_local_inter_l, int rot_tag, struct solution* FlowSol);
+  void set_mpi(int in_inter, int in_ele_type_l, int in_ele_l,
+               int in_local_inter_l, int rot_tag, struct solution *FlowSol);
 
   void calculate_common_invFlux(void);
   void calculate_common_viscFlux(void);
@@ -80,12 +79,11 @@ public:
   /*! move all from cpu to gpu */
   void mv_all_cpu_gpu(void);
 
-protected:
-
+ protected:
   // #### members ####
 
-  array<double*> disu_fpts_r;
-  array<double*> grad_disu_fpts_r;
+  array<double *> disu_fpts_r;
+  array<double *> grad_disu_fpts_r;
 
   int nproc;
   int rank;
@@ -113,10 +111,10 @@ protected:
 #endif
 
   // Dynamic grid variables:
-  array<double*> ndA_dyn_fpts_r;
-  array<double*> J_dyn_fpts_r;
-  array<double*> disu_GCL_fpts_r;
-  array<double*> norm_tconf_GCL_fpts_r;
+  array<double *> ndA_dyn_fpts_r;
+  array<double *> J_dyn_fpts_r;
+  array<double *> disu_GCL_fpts_r;
+  array<double *> norm_tconf_GCL_fpts_r;
 
   double temp_u_GCL_r;
   double temp_f_GCL_r;

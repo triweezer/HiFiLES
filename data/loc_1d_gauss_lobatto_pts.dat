@@ -101,5 +101,5 @@ else if(get_order==10)
 }
 else
 {
-	cout << "ERROR: Not set up for this order ...." << endl;
+	std::cerr << "ERROR: Not set up for this order ...." << std::endl;
 }

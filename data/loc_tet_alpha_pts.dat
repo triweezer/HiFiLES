@@ -1024,5 +1024,5 @@ loc_alpha_pts(119,2)=1.00000000000000;
 }
 else
 {
-	cout << "ERROR: Not set up for this order ...." << endl;
+	std::cerr << "ERROR: Not set up for this order ...." << std::endl;
 }

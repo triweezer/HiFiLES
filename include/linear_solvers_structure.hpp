@@ -1,8 +1,10 @@
 /*!
  * \file linear_solvers_structure.hpp
  * \brief Headers for the classes related to linear solvers (CG, FGMRES, etc)
- *        The subroutines and functions are in the <i>linear_solvers_structure.cpp</i> file.
- * \author - Original Author: Aerospace Design Laboratory (Stanford University) <http://su2.stanford.edu>.
+ *        The subroutines and functions are in the
+ <i>linear_solvers_structure.cpp</i> file.
+ * \author - Original Author: Aerospace Design Laboratory (Stanford University)
+ <http://su2.stanford.edu>.
            - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -27,27 +29,26 @@
 #pragma once
 
 #ifdef _MPI
-#include <mpi.h>
+#  include <mpi.h>
 #endif
 #include <climits>
-#include <limits>
 #include <cmath>
-#include <vector>
-#include <iostream>
 #include <cstdlib>
 #include <iomanip>
+#include <iostream>
+#include <limits>
 #include <string>
+#include <vector>
 
-#include "vector_structure.hpp"
 #include "solution.h"
+#include "vector_structure.hpp"
 
-using namespace std;
+// using namespace std;
 
 /*!
  * \class CSysSolve
- * \brief Class for solving linear systems using classical and Krylov-subspace iterative methods
- * \author J. Hicken.
- * \version 2.0.8
+ * \brief Class for solving linear systems using classical and Krylov-subspace
+ * iterative methods \author J. Hicken. \version 2.0.8
  *
  * The individual solvers could be stand-alone subroutines, but by
  * creating CSysSolve objects we can more easily assign different
@@ -55,9 +56,7 @@ using namespace std;
  * that may arise in a hierarchical solver (i.e. multigrid).
  */
 class CSysSolve {
-  
-private:
-  
+ private:
   /*!
    * \brief sign transfer function
    * \param[in] x - value having sign prescribed
@@ -67,8 +66,8 @@ private:
    * so, feel free to delete this and replace it as needed with the
    * appropriate global function
    */
-  double sign(const double & x, const double & y) const;
-  
+  double sign(const double &x, const double &y) const;
+
   /*!
    * \brief applys a Givens rotation to a 2-vector
    * \param[in] s - sine of the Givens rotation angle
@@ -76,8 +75,8 @@ private:
    * \param[in,out] h1 - first element of 2x1 vector being transformed
    * \param[in,out] h2 - second element of 2x1 vector being transformed
    */
-  void applyGivens(const double & s, const double & c, double & h1, double & h2);
-  
+  void applyGivens(const double &s, const double &c, double &h1, double &h2);
+
   /*!
    * \brief generates the Givens rotation matrix for a given 2-vector
    * \param[in,out] dx - element of 2x1 vector being transformed
@@ -88,8 +87,8 @@ private:
    * Based on givens() of SPARSKIT, which is based on p.202 of
    * "Matrix Computations" by Golub and van Loan.
    */
-  void generateGivens(double & dx, double & dy, double & s, double & c);
-  
+  void generateGivens(double &dx, double &dy, double &s, double &c);
+
   /*!
    * \brief finds the solution of the upper triangular system Hsbg*x = rhs
    *
@@ -101,9 +100,9 @@ private:
    * \pre the upper Hessenberg matrix has been transformed into a
    * triangular matrix.
    */
-  void solveReduced(const int & n, const vector<vector<double> > & Hsbg,
-                    const vector<double> & rhs, vector<double> & x);
-  
+  void solveReduced(const int &n, const std::vector<std::vector<double>> &Hsbg,
+                    const std::vector<double> &rhs, std::vector<double> &x);
+
   /*!
    * \brief Modified Gram-Schmidt orthogonalization
    * \author Based on Kesheng John Wu's mgsro subroutine in Saad's SPARSKIT
@@ -122,8 +121,9 @@ private:
    * vector is kept in nrm0 and updated after operating with each vector
    *
    */
-  void modGramSchmidt(int i, vector<vector<double> > & Hsbg, vector<CSysVector> & w);
-  
+  void modGramSchmidt(int i, std::vector<std::vector<double>> &Hsbg,
+                      std::vector<CSysVector> &w);
+
   /*!
    * \brief writes header information for a CSysSolve residual history
    * \param[in,out] os - ostream class object for output
@@ -133,8 +133,9 @@ private:
    *
    * \pre the ostream object os should be open
    */
-  void writeHeader(const string & solver, const double & restol, const double & resinit);
-  
+  void writeHeader(const std::string &solver, const double &restol,
+                   const double &resinit);
+
   /*!
    * \brief writes residual convergence data for one iteration to a stream
    * \param[in,out] os - ostream class object for output
@@ -144,10 +145,9 @@ private:
    *
    * \pre the ostream object os should be open
    */
-  void writeHistory(const int & iter, const double & res, const double & resinit);
-  
-public:
-  
+  void writeHistory(const int &iter, const double &res, const double &resinit);
+
+ public:
   /*! \brief Conjugate Gradient method
    * \param[in] b - the right hand size vector
    * \param[in,out] x - on entry the intial guess, on exit the solution
@@ -157,10 +157,11 @@ public:
    * \param[in] m - maximum size of the search subspace
    * \param[in] monitoring - turn on priting residuals from solver to screen.
    */
-  unsigned long ConjugateGradient(const CSysVector & b, CSysVector & x, CMatrixVectorProduct & mat_vec,
-                                  CPreconditioner & precond, double tol,
+  unsigned long ConjugateGradient(const CSysVector &b, CSysVector &x,
+                                  CMatrixVectorProduct &mat_vec,
+                                  CPreconditioner &precond, double tol,
                                   unsigned long m, bool monitoring);
-	
+
   /*!
    * \brief Flexible Generalized Minimal Residual method
    * \param[in] b - the right hand size vector
@@ -169,13 +170,15 @@ public:
    * \param[in] precond - object that defines preconditioner
    * \param[in] tol - tolerance with which to solve the system
    * \param[in] m - maximum size of the search subspace
-   * \param[in] monitoring - turn on printing of residuals from solver to screen.
+   * \param[in] monitoring - turn on printing of residuals from solver to
+   * screen.
    */
-  unsigned long FGMRES(const CSysVector & b, CSysVector & x, CMatrixVectorProduct & mat_vec,
-                      CPreconditioner & precond, double tol,
-                      unsigned long m, bool monitoring, solution *FlowSol);
-	
-	/*!
+  unsigned long FGMRES(const CSysVector &b, CSysVector &x,
+                       CMatrixVectorProduct &mat_vec, CPreconditioner &precond,
+                       double tol, unsigned long m, bool monitoring,
+                       solution *FlowSol);
+
+  /*!
    * \brief Biconjugate Gradient Stabilized Method (BCGSTAB)
    * \param[in] b - the right hand size vector
    * \param[in,out] x - on entry the intial guess, on exit the solution
@@ -185,10 +188,9 @@ public:
    * \param[in] m - maximum size of the search subspace
    * \param[in] monitoring - turn on priting residuals from solver to screen.
    */
-  unsigned long BCGSTAB(const CSysVector & b, CSysVector & x, CMatrixVectorProduct & mat_vec,
-                        CPreconditioner & precond, double tol,
-                        unsigned long m, bool monitoring);
-  
+  unsigned long BCGSTAB(const CSysVector &b, CSysVector &x,
+                        CMatrixVectorProduct &mat_vec, CPreconditioner &precond,
+                        double tol, unsigned long m, bool monitoring);
 };
 
 #include "linear_solvers_structure.inl"

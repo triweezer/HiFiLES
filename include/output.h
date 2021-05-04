@@ -1,7 +1,7 @@
 /*!
  * \file output.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,60 +25,60 @@
 
 #pragma once
 
-#include "array.h"
 #include <string>
-#include "input.h"
-#include "eles.h"
-#include "eles_tris.h"
-#include "eles_quads.h"
-#include "eles_hexas.h"
-#include "eles_tets.h"
-#include "eles_pris.h"
-#include "int_inters.h"
+#include "array.h"
 #include "bdy_inters.h"
+#include "eles.h"
+#include "eles_hexas.h"
+#include "eles_pris.h"
+#include "eles_quads.h"
+#include "eles_tets.h"
+#include "eles_tris.h"
+#include "input.h"
+#include "int_inters.h"
 #include "solution.h"
 
 #ifdef _MPI
-#include "mpi.h"
-#include "mpi_inters.h"
+#  include "mpi.h"
+#  include "mpi_inters.h"
 #endif
 
 #ifdef _GPU
-#include "util.h"
+#  include "util.h"
 #endif
 
 /*! write an output file in Tecplot ASCII format */
-void write_tec(int in_file_num, struct solution* FlowSol);
+void write_tec(int in_file_num, struct solution *FlowSol);
 
 /*! write an output file in VTK ASCII format */
-void write_vtu(int in_file_num, struct solution* FlowSol);
+void write_vtu(int in_file_num, struct solution *FlowSol);
 
 /*! writing a restart file */
-void write_restart(int in_file_num, struct solution* FlowSol);
+void write_restart(int in_file_num, struct solution *FlowSol);
 
 /*! compute forces on wall faces*/
-void CalcForces(int in_file_num, struct solution* FlowSol);
+void CalcForces(int in_file_num, struct solution *FlowSol);
 
 /*! compute integral diagnostic quantities */
-void CalcIntegralQuantities(int in_file_num, struct solution* FlowSol);
+void CalcIntegralQuantities(int in_file_num, struct solution *FlowSol);
 
 /*! Calculate time averaged diagnostic quantities */
-void CalcTimeAverageQuantities(struct solution* FlowSol);
+void CalcTimeAverageQuantities(struct solution *FlowSol);
 
 /*! compute error */
-void compute_error(int in_file_num, struct solution* FlowSol);
+void compute_error(int in_file_num, struct solution *FlowSol);
 
 /*! calculate residual */
-void CalcNormResidual(struct solution* FlowSol);
+void CalcNormResidual(struct solution *FlowSol);
 
 /*! monitor convergence of residual */
-void HistoryOutput(int in_file_num, clock_t init, ofstream *write_hist, struct solution* FlowSol);
+void HistoryOutput(int in_file_num, clock_t init, std::ofstream *write_hist,
+                   struct solution *FlowSol);
 
 /*! check if the solution is bounded !*/
-void check_stability(struct solution* FlowSol);
+void check_stability(struct solution *FlowSol);
 
 #ifdef _GPU
 /*! copy solution and gradients from GPU to CPU for above routines !*/
-void CopyGPUCPU(struct solution* FlowSol);
+void CopyGPUCPU(struct solution *FlowSol);
 #endif
-

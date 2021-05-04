@@ -1,7 +1,7 @@
 /*!
  * \file cubature_1d.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -28,23 +28,21 @@
 #include <string>
 #include "array.h"
 
-class cubature_1d
-{
-public:
-
+class cubature_1d {
+ public:
   // #### constructors ####
 
   // default constructor
   cubature_1d();
 
   // constructor 1
-  cubature_1d(int in_order); // set by order
+  cubature_1d(int in_order);  // set by order
 
   // copy constructor
-  cubature_1d(const cubature_1d& in_cubature_1d);
+  cubature_1d(const cubature_1d &in_cubature_1d);
 
   // assignment
-  cubature_1d& operator=(const cubature_1d& in_cubature_1d);
+  cubature_1d &operator=(const cubature_1d &in_cubature_1d);
 
   // destructor
   ~cubature_1d();
@@ -73,7 +71,7 @@ public:
 
   // weight of cubature_1d points
   array<double> weights;
-  
+
   // cubature data file
-  ifstream datfile;
+  std::ifstream datfile;
 };

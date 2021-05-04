@@ -1,7 +1,7 @@
 /*!
  * \file cubature_hexa.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -28,23 +28,21 @@
 #include <string>
 #include "array.h"
 
-class cubature_hexa
-{
-public:
-
+class cubature_hexa {
+ public:
   // #### constructors ####
 
   // default constructor
   cubature_hexa();
 
   // constructor 1
-  cubature_hexa(int in_rule); // set by order
+  cubature_hexa(int in_rule);  // set by order
 
   // copy constructor
-  cubature_hexa(const cubature_hexa& in_cubature);
+  cubature_hexa(const cubature_hexa &in_cubature);
 
   // assignment
-  cubature_hexa& operator=(const cubature_hexa& in_cubature);
+  cubature_hexa &operator=(const cubature_hexa &in_cubature);
 
   // destructor
   ~cubature_hexa();
@@ -79,7 +77,7 @@ public:
 
   // weight of cubature points
   array<double> weights;
-  
+
   // cubature data file
-  ifstream datfile;
+  std::ifstream datfile;
 };

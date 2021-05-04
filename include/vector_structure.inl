@@ -1,7 +1,8 @@
 /*!
  * \file vector_structure.inl
  * \brief inline subroutines of the <i>vector_structure.hpp</i> file.
- * \author - Original Author: Aerospace Design Laboratory (Stanford University) <http://su2.stanford.edu>.
+ * \author - Original Author: Aerospace Design Laboratory (Stanford University)
+ <http://su2.stanford.edu>.
            - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,9 +26,8 @@
 
 #pragma once
 
-inline void CSysVector::SetValZero(void) { 
-  for (unsigned long i = 0; i < nElm; i++)
-		vec_val[i] = 0.0;
+inline void CSysVector::SetValZero(void) {
+  for (unsigned long i = 0; i < nElm; i++) vec_val[i] = 0.0;
 }
 
 inline unsigned long CSysVector::GetLocSize() const { return nElm; }
@@ -46,6 +46,10 @@ inline unsigned long CSysVector::GetNBlk() const { return nBlk; }
 
 inline unsigned long CSysVector::GetNBlkDomain() const { return nBlkDomain; }
 
-inline double & CSysVector::operator[](const unsigned long & i) { return vec_val[i]; }
+inline double &CSysVector::operator[](const unsigned long &i) {
+  return vec_val[i];
+}
 
-inline const double & CSysVector::operator[](const unsigned long & i) const { return vec_val[i]; }
+inline const double &CSysVector::operator[](const unsigned long &i) const {
+  return vec_val[i];
+}

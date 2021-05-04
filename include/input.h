@@ -1,7 +1,7 @@
 /*!
  * \file input.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,16 +25,14 @@
 
 #pragma once
 
-#include <iostream>
 #include <fstream>
-#include <vector>
+#include <iostream>
 #include <map>
+#include <vector>
 #include "array.h"
 
-class input
-{	
-public:
-
+class input {
+ public:
   // #### constructors ####
 
   // default constructor
@@ -44,7 +42,6 @@ public:
   ~input();
 
   // #### methods ####
-
 
   void set_vcjh_scheme_tri(int in_vcjh_scheme_tri);
   void set_vcjh_scheme_hexa(int in_vcjh_scheme_hexa);
@@ -58,7 +55,7 @@ public:
   void setup(char *fileNameC, int rank);
 
   /*! Read in parameters from file */
-  void read_input_file(string fileName, int rank);
+  void read_input_file(std::string fileName, int rank);
 
   /*! Apply non-dimensionalization and do misc. error checks */
   void setup_params(int rank);
@@ -71,11 +68,11 @@ public:
   int equation;
 
   int n_diagnostic_fields;
-  array<string> diagnostic_fields;
+  array<std::string> diagnostic_fields;
   int n_average_fields;
-  array<string> average_fields;
+  array<std::string> average_fields;
   int n_integral_quantities;
-  array<string> integral_quantities;
+  array<std::string> integral_quantities;
 
   double prandtl;
 
@@ -98,29 +95,30 @@ public:
   double CFL;
   int n_steps;
   int plot_freq;
-  string data_file_name;
+  std::string data_file_name;
   int restart_dump_freq;
   int adv_type;
 
   int LES;
   int filter_type;
-	double filter_ratio;
-	int SGS_model;
-	int wall_model;
-	double wall_layer_t;
+  double filter_ratio;
+  int SGS_model;
+  int wall_model;
+  double wall_layer_t;
 
   double spinup_time;
   int monitor_res_freq;
   int monitor_integrals_freq;
   int monitor_cp_freq;
-  int res_norm_type; // 0:infinity norm, 1:L1 norm, 2:L2 norm
-  int error_norm_type; // 0:infinity norm, 1:L1 norm, 2:L2 norm
+  int res_norm_type;    // 0:infinity norm, 1:L1 norm, 2:L2 norm
+  int error_norm_type;  // 0:infinity norm, 1:L1 norm, 2:L2 norm
   int res_norm_field;
 
   int restart_flag;
   int restart_iter;
   int n_restart_files;
-  int restart_mesh_out; // Print out separate restart file with X,Y,Z of all sol'n points?
+  int restart_mesh_out;  // Print out separate restart file with X,Y,Z of all
+                         // sol'n points?
 
   int ic_form;
 
@@ -130,8 +128,8 @@ public:
   int n_deform_iters;
   int mesh_output_freq;
   int mesh_output_format;
-  array<string> boundary_flags;
-  array<array<double> > bound_vel_simple;
+  array<std::string> boundary_flags;
+  array<array<double>> bound_vel_simple;
   array<int> motion_type;
   /* -------------------------------- */
 
@@ -150,12 +148,11 @@ public:
   double T_total_bound;
 
   int mesh_format;
-  string mesh_file;
+  std::string mesh_file;
 
   double dx_cyclic;
   double dy_cyclic;
   double dz_cyclic;
-
 
   int p_res;
   int write_type;
@@ -193,7 +190,7 @@ public:
   int riemann_solve_type;
   int vis_riemann_solve_type;
 
-  //new
+  // new
   double S_gas;
   double T_gas;
   double R_gas;
@@ -225,7 +222,7 @@ public:
   double p_ref;
   double mu_ref;
   double time_ref;
-  
+
   double Mach_wall;
   double nx_wall;
   double ny_wall;
@@ -234,7 +231,7 @@ public:
   array<double> v_wall;
   double uvw_wall;
   double T_wall;
-  
+
   double Mach_c_ic;
   double nx_c_ic;
   double ny_c_ic;
@@ -281,19 +278,18 @@ public:
  *  \author Jacob Crabill
  *  \date 4/30/2015
  */
-class fileReader
-{
-public:
+class fileReader {
+ public:
   /*! Default constructor */
   fileReader();
 
-  fileReader(string fileName);
+  fileReader(std::string fileName);
 
   /*! Default destructor */
   ~fileReader();
 
   /*! Set the file to be read from */
-  void setFile(string fileName);
+  void setFile(std::string fileName);
 
   /*! Open the file to prepare for reading simulation parameters */
   void openFile(void);
@@ -303,38 +299,43 @@ public:
 
   /* === Functions to read paramters from input file === */
 
-  /*! Read a single value from the input file; if not found, apply a default value */
+  /*! Read a single value from the input file; if not found, apply a default
+   * value */
   template <typename T>
-  void getScalarValue(string optName, T &opt, T defaultVal);
+  void getScalarValue(std::string optName, T &opt, T defaultVal);
 
-  /*! Read a single value from the input file; if not found, throw an error and exit */
+  /*! Read a single value from the input file; if not found, throw an error and
+   * exit */
   template <typename T>
-  void getScalarValue(string optName, T &opt);
+  void getScalarValue(std::string optName, T &opt);
 
-  /*! Read a vector of values from the input file; if not found, apply the default value to all elements */
+  /*! Read a vector of values from the input file; if not found, apply the
+   * default value to all elements */
   template <typename T>
-  void getVectorValue(string optName, vector<T> &opt, T defaultVal);
+  void getVectorValue(std::string optName, std::vector<T> &opt, T defaultVal);
 
-  /*! Read a vector of values from the input file; if not found, throw an error and exit */
+  /*! Read a vector of values from the input file; if not found, throw an error
+   * and exit */
   template <typename T>
-  void getVectorValue(string optName, vector<T> &opt);
-
-  template <typename T>
-  void getVectorValue(string optName, array<T> &opt);
-
-  /*! Read a vector of values from the input file; if not found, setup vector to size 0 and continue */
-  template <typename T>
-  void getVectorValueOptional(string optName, vector<T> &opt);
+  void getVectorValue(std::string optName, std::vector<T> &opt);
 
   template <typename T>
-  void getVectorValueOptional(string optName, array<T> &opt);
+  void getVectorValue(std::string optName, array<T> &opt);
 
-  /*! Read in a map of type <T,U> from input file; each entry prefaced by optName */
+  /*! Read a vector of values from the input file; if not found, setup vector to
+   * size 0 and continue */
+  template <typename T>
+  void getVectorValueOptional(std::string optName, std::vector<T> &opt);
+
+  template <typename T>
+  void getVectorValueOptional(std::string optName, array<T> &opt);
+
+  /*! Read in a map of type <T,U> from input file; each entry prefaced by
+   * optName */
   template <typename T, typename U>
-  void getMap(string optName, map<T, U> &opt);
+  void getMap(std::string optName, std::map<T, U> &opt);
 
-private:
-  ifstream optFile;
-  string fileName;
-
+ private:
+  std::ifstream optFile;
+  std::string fileName;
 };

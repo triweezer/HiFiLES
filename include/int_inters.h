@@ -1,7 +1,7 @@
 /*!
  * \file int_inters.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,17 +25,15 @@
 
 #pragma once
 
-#include "inters.h"
-#include "int_inters.h"
 #include "array.h"
+#include "int_inters.h"
+#include "inters.h"
 #include "solution.h"
 
-struct solution; // forwards declaration
+struct solution;  // forwards declaration
 
-class int_inters: public inters
-{
-public:
-
+class int_inters : public inters {
+ public:
   // #### constructors ####
 
   // default constructor
@@ -52,12 +50,16 @@ public:
   void setup(int in_n_inters, int in_inter_type);
 
   /*! set interior interface */
-  void set_interior(int in_inter, int in_ele_type_l, int in_ele_type_r, int in_ele_l, int in_ele_r, int in_local_inter_l, int in_local_inter_r, int rot_tag, struct solution* FlowSol);
+  void set_interior(int in_inter, int in_ele_type_l, int in_ele_type_r,
+                    int in_ele_l, int in_ele_r, int in_local_inter_l,
+                    int in_local_inter_r, int rot_tag,
+                    struct solution *FlowSol);
 
   /*! move all from cpu to gpu */
   void mv_all_cpu_gpu(void);
 
-  /*! calculate normal transformed continuous inviscid flux at the flux points */
+  /*! calculate normal transformed continuous inviscid flux at the flux points
+   */
   void calculate_common_invFlux(void);
 
   /*! calculate normal transformed continuous viscous flux at the flux points */
@@ -66,23 +68,22 @@ public:
   /*! calculate delta in transformed discontinuous solution at flux points */
   void calc_delta_disu_fpts(void);
 
-protected:
-
+ protected:
   // #### members ####
   //
-  array<double*> disu_fpts_r;
-  array<double*> delta_disu_fpts_r;
-  array<double*> norm_tconf_fpts_r;
-  //array<double*> norm_tconvisf_fpts_r;
-  array<double*> detjac_fpts_r;
-  array<double*> tdA_fpts_r;
-  array<double*> grad_disu_fpts_r;
+  array<double *> disu_fpts_r;
+  array<double *> delta_disu_fpts_r;
+  array<double *> norm_tconf_fpts_r;
+  // array<double*> norm_tconvisf_fpts_r;
+  array<double *> detjac_fpts_r;
+  array<double *> tdA_fpts_r;
+  array<double *> grad_disu_fpts_r;
 
   // Dynamic grid variables:
-  array<double*> ndA_dyn_fpts_r;
-  array<double*> J_dyn_fpts_r;
-  array<double*> disu_GCL_fpts_r;
-  array<double*> norm_tconf_GCL_fpts_r;
+  array<double *> ndA_dyn_fpts_r;
+  array<double *> J_dyn_fpts_r;
+  array<double *> disu_GCL_fpts_r;
+  array<double *> norm_tconf_GCL_fpts_r;
 
   double temp_u_GCL_r;
   double temp_f_GCL_r;

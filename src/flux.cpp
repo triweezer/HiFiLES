@@ -29,7 +29,7 @@
 #include "../include/array.h"
 #include "../include/flux.h"
 
-using namespace std;
+//using namespace std;
 
 // calculate inviscid flux in 2D
 

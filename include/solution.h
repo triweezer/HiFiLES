@@ -1,7 +1,7 @@
 /*!
  * \file solution.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -25,21 +25,21 @@
 
 #pragma once
 
-#include "array.h"
 #include <string>
-#include "input.h"
-#include "eles.h"
-#include "eles_tris.h"
-#include "eles_quads.h"
-#include "eles_hexas.h"
-#include "eles_tets.h"
-#include "eles_pris.h"
-#include "int_inters.h"
+#include "array.h"
 #include "bdy_inters.h"
+#include "eles.h"
+#include "eles_hexas.h"
+#include "eles_pris.h"
+#include "eles_quads.h"
+#include "eles_tets.h"
+#include "eles_tris.h"
+#include "input.h"
+#include "int_inters.h"
 
 #ifdef _MPI
-#include "mpi.h"
-#include "mpi_inters.h"
+#  include "mpi.h"
+#  include "mpi_inters.h"
 #endif
 
 class int_inters; /*!< Forwards declaration */
@@ -47,23 +47,22 @@ class bdy_inters; /*!< Forwards declaration */
 class mpi_inters; /*!< Forwards declaration */
 
 struct solution {
-
   int viscous;
   double time;
   double ene_hist;
   double grad_ene_hist;
-  
+
   array<int> num_f_per_c;
-  
+
   int n_ele_types;
   int n_dims;
-  
+
   int num_eles;
   int num_verts;
   int num_edges;
   int num_inters;
   int num_cells_global;
-  
+
   int n_steps;
   int adv_type;
   int plot_freq;
@@ -72,7 +71,7 @@ struct solution {
 
   int write_type;
 
-  array<eles*> mesh_eles;
+  array<eles *> mesh_eles;
   eles_quads mesh_eles_quads;
   eles_tris mesh_eles_tris;
   eles_hexas mesh_eles_hexas;
@@ -84,15 +83,15 @@ struct solution {
 
   array<int_inters> mesh_int_inters;
   array<bdy_inters> mesh_bdy_inters;
-  
+
   int rank;
-  
+
   /*! No-slip wall flux point coordinates for wall models. */
 
-	array< array<double> > loc_noslip_bdy;
+  array<array<double>> loc_noslip_bdy;
 
   /*! Diagnostic output quantities. */
-  
+
   array<double> body_force;
   array<double> inv_force;
   array<double> vis_force;
@@ -102,23 +101,22 @@ struct solution {
   double coeff_drag;
 
   /*! Plotting resolution. */
-  
+
   int p_res;
-  
+
 #ifdef _MPI
-  
+
   int nproc;
-  
+
   int n_mpi_inter_types;
   array<mpi_inters> mesh_mpi_inters;
   array<int> error_states;
-  
+
   int n_mpi_inters;
-    
+
   /*! No-slip wall flux point coordinates for wall models. */
 
-	array< array<double> > loc_noslip_bdy_global;
+  array<array<double>> loc_noslip_bdy_global;
 
 #endif
-  
 };

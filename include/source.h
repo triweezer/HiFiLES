@@ -1,7 +1,7 @@
 /*!
  * \file source.h
- * \author - Original code: SD++ developed by Patrice Castonguay, Antony Jameson,
- *                          Peter Vincent, David Williams (alphabetical by surname).
+ * \author - Original code: SD++ developed by Patrice Castonguay, Antony
+ * Jameson, Peter Vincent, David Williams (alphabetical by surname).
  *         - Current development: Aerospace Computing Laboratory (ACL)
  *                                Aero/Astro Department. Stanford University.
  * \version 0.1.0
@@ -28,7 +28,9 @@
 #include "array.h"
 
 /*! calculate source term for Spalart-Allmaras turbulence model in 2D */
-void calc_source_SA_2d(array<double>& in_u, array<double>& in_grad_u, double& d, double& out_source);
+void calc_source_SA_2d(array<double> &in_u, array<double> &in_grad_u, double &d,
+                       double &out_source);
 
 /*! calculate source term for Spalart-Allmaras turbulence model in 3D */
-void calc_source_SA_3d(array<double>& in_u, array<double>& in_grad_u, double& d, double& out_source);
+void calc_source_SA_3d(array<double> &in_u, array<double> &in_grad_u, double &d,
+                       double &out_source);
