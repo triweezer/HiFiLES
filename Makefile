@@ -170,7 +170,7 @@ AUTOHEADER = ${SHELL} /home/users/spemberton/Codes/HiFiLES/missing --run autohea
 AUTOMAKE = ${SHELL} /home/users/spemberton/Codes/HiFiLES/missing --run automake-1.11
 AWK = gawk
 BLAS_CXX = -I /usr/include/x86_64-linux-gnu -D_STANDARD_BLAS
-BLAS_LD = /usr/lib/x86_64-linux-gnu/libcblas.a
+BLAS_LD = /usr/lib/x86_64-linux-gnu/libcblas.a /usr/lib/x86_64-linux-gnu/libatlas.a
 BLAS_LDFLAGS = 
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -291,6 +291,7 @@ pdfdir = ${docdir}
 prefix = /..
 program_transform_name = s,x,x,
 psdir = ${docdir}
+runstatedir = ${localstatedir}/run
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .

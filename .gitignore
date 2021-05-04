@@ -58,3 +58,11 @@ a.out
 CMakeSettings.json
 # Code Analysis
 *.tmp
+
+*.m4
+*.cache
+*.dirstamp
+
+cases/
+*.log
+*.deps

@@ -178,6 +178,24 @@ ny_wall           0.
 nz_wall           0.
 T_wall            300
 
+/* Boundary Condition Names to apply:
+	sub_in_simp - Subsonic inflow simple (free pressure)
+	sub_out_simp - Subsonic outflow simple (fixed pressure)
+	sub_in_char - Subsonic inflow characteristic
+	sub_out_char - Subsonic outflow characteristic
+	sup_in - Supersonic inflow
+	sup_out - Supersonic outflow
+	slip_wall - Slip wall
+	cyclic
+	isotherm_fix - Isothermal, no-slip wall
+	adiabat_fix - Adiabatic, no-slip wall
+	isotherm_move - Isothermal, no-slip moving wall
+	adiabat_move - Adiabatic, no-slip moving wall
+	char - Characteristic
+	slip_wall_dual - Dual consistent BC
+	ad_wall - Advection, Advection-Diffusion Boundary Conditions
+*/
+
 ==== Inviscid ====
 rho_bound         1.
 u_bound           1.0
