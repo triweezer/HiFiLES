@@ -780,7 +780,7 @@ void write_vtu(int in_file_num, struct solution *FlowSol) {
 #else
 
   /*! In serial, don't write a .pvtu file. */
-  std::cout << "Writing Paraview file " << dumpnum << " ... " << flush;
+  std::cout << "Writing Paraview file " << dumpnum << " ... " << std::flush;
 
 #endif
 

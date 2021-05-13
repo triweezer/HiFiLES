@@ -27,7 +27,7 @@
 export HIFILES_HOME=$(pwd)
 # ---------------------------------------------------------------
 # Basic User-Modifiable Build Settings [Change these as desired]
-NODE="CPU"              # CPU or GPU
+NODE="GPU"              # CPU or GPU
 CODE="RELEASE"            # DEBUG or RELEASE
 BLAS="ATLAS"               # ATLAS, STANDARD, ACCLERATE, or NO
 PARALLEL="YES"           # YES or NO
@@ -65,11 +65,11 @@ METIS_INCLUDE="/usr/local/include"      # location of metis.h
 #   compute_13	 + double precision floating point support
 #   compute_20	 + Fermi support
 #   compute_30	 + Kepler support
-CUDA_ARCH="13"
+CUDA_ARCH="60"
 #CUDA_LIB="/usr/local/cuda-5.0/lib64"
 #CUDA_INCLUDE="/usr/local/cuda-5.0/include"
-CUDA_LIB="/usr/local/cuda-10.1/lib64"
-CUDA_INCLUDE="/usr/local/cuda-10.1/include"
+CUDA_LIB="/usr/local/cuda-10.2/lib64"
+CUDA_INCLUDE="/usr/include"
 
 # ---------------------------------------------------------------
 # Run configure using the chosen options [Should not change this]

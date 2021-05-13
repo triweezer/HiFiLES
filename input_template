@@ -52,6 +52,7 @@ pen_fact   0.5
 -----------------------
 LES options
 -----------------------
+turb_model		0 									// 0: no RANS, 1: SA turbulence model
 LES           1                   // 0: no LES, 1: LES
 filter_type   2                   // 0: Vasilyev high-order, 1: discrete Gaussian, 2: Modal Vandermonde. Not all filters are available for each element type.
 filter_ratio  2                   // Filter width ratio. Try range 1:2. Not used for Modal Vandermonde filter.
@@ -84,7 +85,7 @@ write_type             0          // 0: Paraview, 1: Tecplot
 0
 // Choose extra fields to be written to file: u v w energy pressure mach vorticity q_criterion. 
 // Set to 0 or comment out for no diagnostic fields
-n_diagnostic_fields    3 u v mach 
+diagnostic_fields    3 u v mach 
 
 // Choose integral diagnostics: kineticenergy, vorticity, pressuredilatation, straincolonproduct. Set to 0 for no diagnostics
 // Set to 0 or comment out for no integral quantity output

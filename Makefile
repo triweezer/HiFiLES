@@ -177,10 +177,10 @@ CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
-CUDA_ARCH = 
-CUDA_CXX = -D_CPU
-CUDA_LDFLAGS = 
-CUDA_LIBS = 
+CUDA_ARCH = -gencode=arch=compute_60,code=sm_60
+CUDA_CXX = -D_GPU -I/usr/include
+CUDA_LDFLAGS = -L/usr/local/cuda-10.2/lib64
+CUDA_LIBS = -lcudart -lcublas -lcusparse -lm
 CXX = mpicxx
 CXXCPP = mpicxx -E
 CXXDEPMODE = depmode=gcc3
@@ -220,8 +220,8 @@ MKDIR_P = /bin/mkdir -p
 MPI_INCLUDE = -I/usr/include/mpi
 NM = /usr/bin/nm -B
 NMEDIT = 
-NVCC = 
-NVCCFLAGS = 
+NVCC = nvcc
+NVCCFLAGS = -D_GPU -I/usr/include -D_MPI -I/usr/include/mpi
 OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 

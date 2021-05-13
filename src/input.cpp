@@ -537,8 +537,8 @@ void fileReader::getScalarValue(std::string optName, T &opt, T defaultVal) {
   while (getline(optFile, str)) {
     // Remove any leading whitespace & see if first word is the input option
     std::stringstream ss;
-    ss.str(str);
-    ss >> optKey;
+    ss.str(str);   
+    ss >> optKey;  
     if (optKey.compare(optName) == 0) {
       if (!(ss >> opt)) {
         // This could happen if, for example, trying to assign a string to a
